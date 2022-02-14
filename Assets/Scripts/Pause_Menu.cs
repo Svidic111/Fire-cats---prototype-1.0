@@ -9,6 +9,14 @@ public class Pause_Menu : MonoBehaviour
     
     [SerializeField]
     private GameObject PauseMenu;
+    [SerializeField]
+    private GameObject EndGameMenu;
+
+    private void Start() {
+        if (_isGamePaused == true) {
+            _isGamePaused = false;
+        }
+    }
 
     
     public void LoadMainMenu() {
@@ -34,5 +42,20 @@ public class Pause_Menu : MonoBehaviour
             PauseMenu.SetActive(false);
             Time.timeScale = 1f;
         }
+    }
+
+    public void LevelEndMenu() {
+        if (_isGamePaused == false) {
+            _isGamePaused = true;
+            
+            EndGameMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
+
+    public void RetryLevel_1() {
+        Time.timeScale = 1f;
+   
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }

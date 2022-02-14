@@ -7,11 +7,11 @@ public class Cloud_1 : MonoBehaviour
     [SerializeField]
     private float _speed = 0.2f;
     private Level_1_UI _UIManager;
-    [SerializeField]
-    private int _cloudValue;
+    // [SerializeField]
+    // private int _cloudValue;
 
     void Start() {
-      _cloudValue = 30;
+    //   _cloudValue = 30;
 
       _UIManager = GameObject.Find("Canvas").GetComponent<Level_1_UI>();  
     }
@@ -33,7 +33,7 @@ public class Cloud_1 : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        _UIManager.UpdateScore(_cloudValue);
+        // _UIManager.UpdateScore(_cloudValue);
         Destroy(this.gameObject);
     }
 

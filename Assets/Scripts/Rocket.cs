@@ -21,7 +21,7 @@ public class Rocket : MonoBehaviour
     private Spawn_Manager _spawnManager;
     private bool _hasCollide = false;
     public float AngularSpeed;
-    [SerializeField]
+    private Level_1_UI _UIManager;
 
 
     void Start()
@@ -29,6 +29,7 @@ public class Rocket : MonoBehaviour
         _spawnManager = FindObjectOfType<Spawn_Manager>();
         _rb = GetComponent<Rigidbody2D>();
         _instPos = transform.position;
+        _UIManager = GameObject.Find("Canvas").GetComponent<Level_1_UI>();
     }
 
 
@@ -47,6 +48,7 @@ public class Rocket : MonoBehaviour
             || transform.position.y <= -5.5f || transform.position.y >= 5.5f)
         {
             _spawnManager.newRocket(_instPos);
+            _UIManager.WasteRocket();
             Destroy(this.gameObject);
         }
     }
@@ -72,6 +74,7 @@ public class Rocket : MonoBehaviour
                 _randomIndex = Random.Range(0, 2);
 
                 _isLaunched = true;
+                
                 return;
             }
 
@@ -98,6 +101,7 @@ public class Rocket : MonoBehaviour
         {
             _hasCollide = true;
             _spawnManager.newRocket(_instPos);
+            _UIManager.WasteRocket();
             Destroy(this.gameObject);
         }
 
@@ -105,6 +109,7 @@ public class Rocket : MonoBehaviour
         {
             _hasCollide = true;
             _spawnManager.newRocket(_instPos);
+            _UIManager.WasteRocket();
             Destroy(this.gameObject);
         }
     }

@@ -7,11 +7,11 @@ public class Cloud_3 : MonoBehaviour
     [SerializeField]
     private float _speed = 0.3f;
     private Level_1_UI _UIManager;
-    [SerializeField]
-    private int _cloudValue;
+    // [SerializeField]
+    // private int _cloudValue;
 
     void Start() {
-        _cloudValue = 10;
+        // _cloudValue = 10;
 
         _UIManager = GameObject.Find("Canvas").GetComponent<Level_1_UI>();    
     }
@@ -34,7 +34,7 @@ public class Cloud_3 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Rocket") {
-            _UIManager.UpdateScore(_cloudValue);
+            // _UIManager.UpdateScore(_cloudValue);
             Destroy(this.gameObject);
         }
     }
